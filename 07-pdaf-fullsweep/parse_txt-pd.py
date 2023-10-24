@@ -6,7 +6,7 @@ plt.rcParams['axes.unicode_minus']=False # 用来正常显示负号
 
 
 def op_main(by_name=u'Sheet1'):
-    file_path = "pdaf_fullsweep_log.txt"    
+    file_path = "pdaf_fullsweep_log1011.txt"    
     result = extract_data(file_path)
 
     '''
@@ -47,7 +47,7 @@ def extract_data(file_path):
 
     for line in lines:
         line = line.strip()
-        if line.startswith('01-19') and 'lens_pos=' in line:
+        if line.startswith('07-03') and 'lens_pos=' in line:
             parts = line.split(' ')
             lens_pos = None
             pd = None

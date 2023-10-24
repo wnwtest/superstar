@@ -60,7 +60,7 @@ def op_main(by_name=u'Sheet1'):
     #plt.yticks([i for i in range(y_min,y_max)])
 
     plt.title("fps 分布图")
-    # plot函数作图
+    # 
     #plt.plot(x0,y0 , color="r", linestyle="--", marker="*", linewidth=1.0)
     #plt.plot(x1, y1, color="g", linestyle="--", marker="*", linewidth=1.0)
     #plt.plot(x2, y2, color="b", linestyle="--", marker="*", linewidth=1.0)
