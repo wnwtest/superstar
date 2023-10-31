@@ -7,11 +7,10 @@ def  driver_initsettings_check( ) :
     # 得到文档元素对象
     rootNote = dom.documentElement
     print("rootNote", rootNote.nodeName)
-    resolutionInfo = rootNote.getElementsByTagName('initSettings')
-    value1 = resolutionInfo[0]
-    print("sub node 1", value1.nodeName)
-    initSetting = value1.getElementsByTagName('initSetting')
-    res_resSettings_value = initSetting[0];
+    resolutionInfo = rootNote.getElementsByTagName('initSettings')[0]
+    print("sub node 1", resolutionInfo.nodeName)
+    initSetting = resolutionInfo.getElementsByTagName('initSetting')[0]
+    res_resSettings_value = initSetting.getElementsByTagName('resSettings')[0]
     #print("res 0", res0_resSettings_value.nodeName)
 
     res_regSetting = res_resSettings_value.getElementsByTagName('regSetting')
@@ -23,11 +22,11 @@ def  driver_initsettings_check( ) :
         #print("res 0", res0_resSetting_value.nodeName)
         #print("dump reg info")
         #print("reg 0 ", res0_resSetting_value.nodeValue)
-        registerAddr = res_resSetting_value.getElementsByTagName('registerAddr')
-        addr = registerAddr[0]
+        registerAddr = res_resSetting_value.getElementsByTagName('registerAddr')[0]
+        addr = registerAddr.firstChild.data
         #print("addr ", addr.firstChild.data)
-        registerData = res_resSetting_value.getElementsByTagName('registerData')
-        data = registerData[0]
+        registerData = res_resSetting_value.getElementsByTagName('registerData')[0]
+        data = registerData.firstChild.data
         #print("data", data.firstChild.data)
         print("addr:",addr.firstChild.data," data:",data.firstChild.data)
 
