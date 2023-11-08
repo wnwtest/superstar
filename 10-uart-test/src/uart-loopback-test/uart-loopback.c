@@ -100,7 +100,11 @@ int main(int argc, char **argv) {
   
   // Set attributes
   struct termios options;
-  tcgetattr(hDevice, &options);
+  if (tcgetattr(hDevice, &options) == -1) {
+        printf("Error getting tty attributes.\n");
+        return -1;
+    }
+  //tcgetattr(hDevice, &options);
   options.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP
                     | INLCR | IGNCR | ICRNL | IXON);
   options.c_oflag &= ~OPOST;
@@ -112,7 +116,12 @@ int main(int argc, char **argv) {
   //options.c_cflag = B9600 | CS8 | CREAD | CLOCAL;
   //options.c_iflag = IGNPAR | ICRNL;
   tcflush(hDevice, TCIOFLUSH);
-  tcsetattr(hDevice, TCSANOW, &options);
+  options.c_cflag &= ~CRTSCTS;
+  if (tcsetattr(hDevice, TCSANOW, &options) == -1) {
+        printf("Error setting tty attributes.\n");
+        return -1;
+    }
+  //tcsetattr(hDevice, TCSANOW, &options);
   
   // write
   if ((bytes_write=write(hDevice,frame,sizeof(frame)))!=(sizeof(frame))) {
