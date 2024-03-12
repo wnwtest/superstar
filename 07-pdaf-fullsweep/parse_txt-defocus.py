@@ -1,12 +1,19 @@
 #-*- coding=utf-8 -*-
 import matplotlib.pyplot as plt
 from functools import reduce
+import sys
+import re
+
 plt.rcParams['font.sans-serif']=['SimHei'] # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus']=False # 用来正常显示负号
 
 
 def op_main(by_name=u'Sheet1'):
-    file_path = "pdaf_fullsweep_log1011.txt"    
+    if len(sys.argv) < 2:
+        print("请指定文件路径作为参数")
+        return
+    
+    file_path = sys.argv[1]   
     result = extract_data(file_path)
 
     '''
@@ -42,12 +49,14 @@ def main():
     op_main()
 def extract_data(file_path):
     data = {}
+    pattern = re.compile(r"\d{2}-\d{2}\s")  # 匹配日期时间格式如"01-26 094713.002"
+
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
     for line in lines:
         line = line.strip()
-        if line.startswith('07-03') and 'lens_pos=' in line:
+        if pattern.match(line) and 'lens_pos=' in line:
             parts = line.split(' ')
             lens_pos = None
             pd = None
