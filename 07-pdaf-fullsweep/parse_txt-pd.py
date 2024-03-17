@@ -49,7 +49,7 @@ def main():
     op_main()
 def extract_data(file_path):
     data = {}
-    pattern = re.compile(r"\d{2}-\d{2}\s")  # 匹配日期时间格式如"01-26 094713.002"
+    pattern = re.compile(r"\d{2}-\d{2}\s")  # 匹配日期时间格式如"01-26 "
     
     with open(file_path, 'r') as file:
         lines = file.readlines()
