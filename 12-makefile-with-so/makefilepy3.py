@@ -1,9 +1,20 @@
-'''
+"""
+generate_makefile.py
+
+This script generates an Android makefile for a given APK and its associated shared libraries.
+
+Usage: python generate_makefile.py <apk_name> <so_lib_folder>
+
+License: MIT License
+
+Copyright (c) 2024 <tony wang>
+
 这是一段构建Makefile的Python脚本。脚本的主要功能是根据给定的apk名称（apk_name）和包含.so库的文件夹（so_lib_folder）生成对应的Makefile。
 它首先获取文件夹中所有.so文件，然后循环生成每个.so库的配置。然后，生成apk的配置，包括其依赖的.so库。最后，将所有的配置写入一个叫作'out.mk'的文件中。
 运行文件的命令应为 python generate_makefile.py <apk_name> <so_lib_folder> 其中，<apk_name> 为你的apk名称，<so_lib_folder>为.so库的文件夹。
 文件运行后，会在当前目录生成一个名为 'out.mk' 的Makefile文件
-'''
+
+"""
 
 import sys
 import os
