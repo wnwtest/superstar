@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 generate_makefile.py
 
@@ -19,7 +20,7 @@ import sys
 import os
 
 def generate_makefile(apk_name, so_lib_folder):
-    makefile_text = ""
+    makefile_text = "LOCAL_PATH := $(my-dir)\n"
     so_libs = [f[:-3] for f in os.listdir(so_lib_folder) if f.endswith('.so')]
 
     # Generate library configurations
