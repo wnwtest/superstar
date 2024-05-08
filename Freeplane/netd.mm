@@ -312,8 +312,7 @@
       Station代表配备无线网络接口的设备,如手机、笔记本等
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node TEXT="NAT" POSITION="bottom_or_right" ID="ID_1681649700" CREATED="1715042915601" MODIFIED="1715043337149"><richcontent TYPE="DETAILS" HIDDEN="true">
@@ -428,9 +427,7 @@
 </html></richcontent>
 </node>
 <node TEXT="USB Tether" POSITION="bottom_or_right" ID="ID_1885835523" CREATED="1715046877567" MODIFIED="1715046885448">
-<node TEXT="RNDIS" ID="ID_985554573" CREATED="1715046903079" MODIFIED="1715047218290">
-<hook URI="../../F:/2024/微信截图_20240507095333.png" SIZE="0.63492066" NAME="ExternalObject"/>
-<richcontent TYPE="DETAILS" HIDDEN="true">
+<node TEXT="RNDIS" ID="ID_985554573" CREATED="1715046903079" MODIFIED="1715157172935"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
   <head>
     
@@ -533,17 +530,10 @@
 </html></richcontent>
 </node>
 </node>
-<node TEXT="iptables" POSITION="top_or_left" ID="ID_677200261" CREATED="1715050220360" MODIFIED="1715050294249">
-<hook URI="../../F:/2024/微信截图_20240507105117.png" SIZE="1.0" NAME="ExternalObject"/>
-<node TEXT=" Filter Table" ID="ID_477027249" CREATED="1715050351792" MODIFIED="1715050606625">
-<hook URI="../../F:/2024/微信截图_20240507105555.png" SIZE="1.0" NAME="ExternalObject"/>
-</node>
-<node TEXT="NAT table" ID="ID_1046248047" CREATED="1715050377056" MODIFIED="1715050616401">
-<hook URI="../../F:/2024/微信截图_20240507105608.png" SIZE="1.0" NAME="ExternalObject"/>
-</node>
-<node TEXT="Mangle table" ID="ID_650615563" CREATED="1715050403160" MODIFIED="1715050628664">
-<hook URI="../../F:/2024/微信截图_20240507105624.png" SIZE="1.0" NAME="ExternalObject"/>
-</node>
+<node TEXT="iptables" POSITION="top_or_left" ID="ID_677200261" CREATED="1715050220360" MODIFIED="1715157042434">
+<node TEXT=" Filter Table" ID="ID_477027249" CREATED="1715050351792" MODIFIED="1715157121175"/>
+<node TEXT="NAT table" ID="ID_1046248047" CREATED="1715050377056" MODIFIED="1715157141215"/>
+<node TEXT="Mangle table" ID="ID_650615563" CREATED="1715050403160" MODIFIED="1715157149887"/>
 <node TEXT="Raw table" ID="ID_1574769160" CREATED="1715050424800" MODIFIED="1715050668579"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
   <head>
@@ -564,9 +554,7 @@
   </body>
 </html></richcontent>
 </node>
-<node TEXT="IPTABLES RULES" ID="ID_1385619300" CREATED="1715051041744" MODIFIED="1715051284491">
-<hook URI="../../F:/2024/微信截图_20240507110432.png" SIZE="1.0" NAME="ExternalObject"/>
-<richcontent TYPE="DETAILS" HIDDEN="true">
+<node TEXT="IPTABLES RULES" ID="ID_1385619300" CREATED="1715051041744" MODIFIED="1715157158311"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
   <head>
     
