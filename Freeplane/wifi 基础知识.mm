@@ -491,8 +491,7 @@
       QoS来源于802.11e
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="无线电测量服务" ID="ID_449751004" CREATED="1715157801303" MODIFIED="1715157952737"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
@@ -502,8 +501,7 @@
   <body>
     无线电测量(Radio Measurement)服务为上层应用提供查询无线电相关信息的接口。 ·通过无线电测量来获取周围AP的信息。 ·能够在所支持的信道上进行无线电测量 无线电测量服务来源于802.11k
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node TEXT="802.11 MAC服务和帧" POSITION="bottom_or_right" ID="ID_613057761" CREATED="1715158105798" MODIFIED="1715158110183">
@@ -518,9 +516,8 @@
       供LLC层发送数据
     </p>
   </body>
-</html>
-</richcontent>
-<node TEXT="parameter" ID="ID_224970673" CREATED="1715158514367" MODIFIED="1715158765058"><richcontent TYPE="DETAILS">
+</html></richcontent>
+<node TEXT="parameter" ID="ID_224970673" CREATED="1715158514367" MODIFIED="1715158765058"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
   <head>
     
@@ -569,8 +566,7 @@
       UP较高的数据见得到优先处理。但对于组播数据,发送者可以设置service class为ReorderableGroupAddressed进行次序调整
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node TEXT="MA-UNITDATA.indication" ID="ID_1047047830" CREATED="1715158180238" MODIFIED="1715158281553"><richcontent TYPE="DETAILS">
@@ -583,8 +579,7 @@
       通知LLC层进行数据接收
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node TEXT="parameter" ID="ID_560973183" CREATED="1715158801190" MODIFIED="1715158870786"><richcontent TYPE="DETAILS">
 <html>
   <head>
@@ -622,8 +617,7 @@
       )
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node TEXT="MA-UNITDATA-STATUS.indication" ID="ID_950657933" CREATED="1715158185446" MODIFIED="1715158320841"><richcontent TYPE="DETAILS">
@@ -636,8 +630,7 @@
       通知LLC层自己(即MAC层)的状态
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node TEXT="parameter" ID="ID_1123868601" CREATED="1715159116302" MODIFIED="1715159172914"><richcontent TYPE="DETAILS">
 <html>
   <head>
@@ -669,8 +662,7 @@
       )
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -693,8 +685,7 @@
       ·FCS:(Frame Check Sequence,帧校验序列)用于保障帧数据完整性。
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node TEXT="Frame Control域" ID="ID_1582425604" CREATED="1715160202972" MODIFIED="1715161635056"><richcontent TYPE="DETAILS">
 <html>
   <head>
@@ -732,8 +723,7 @@
       ·Order:指明接收端必须按顺序处理该帧。
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="Duration/ID域" ID="ID_99255483" CREATED="1715161669676" MODIFIED="1715161723767"><richcontent TYPE="DETAILS">
 <html>
@@ -745,8 +735,7 @@
       Duration/ID域占2字节共16位,其具体含义根据Type和Subtype的不同而变化,不过大体就两种,分别代表ID和Duration
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="Address域" ID="ID_458759500" CREATED="1715161889836" MODIFIED="1715162006352"><richcontent TYPE="DETAILS">
 <html>
@@ -776,8 +765,7 @@
       ·第47位表示该MAC地址是全球唯一的还是本地唯一。故该位也称为G/L位
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node TEXT="BSSID" ID="ID_1710247743" CREATED="1715163113115" MODIFIED="1715163116012"/>
 <node TEXT="目标地址(Destination Address,DA)" ID="ID_354229956" CREATED="1715163118819" MODIFIED="1715163302816"><richcontent TYPE="DETAILS">
 <html>
@@ -789,8 +777,7 @@
       用来描述MAC数据包最终接收者(final recipient),可以是单播或组播地址
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="源地址(Source Address,SA)" ID="ID_914566446" CREATED="1715163120259" MODIFIED="1715163276552"><richcontent TYPE="DETAILS">
 <html>
@@ -802,8 +789,7 @@
       用来描述最初发出MAC数据包的STA地址。一般情况下都是单播地址。
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="发送STA地址(Transmitter Address,TA)" ID="ID_1117551575" CREATED="1715163121251" MODIFIED="1715163252848"><richcontent TYPE="DETAILS">
 <html>
@@ -815,8 +801,7 @@
       用于描述将MAC数据包发送到WM中的STA地址
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="接收STA地址(Receiver Address,RA)" ID="ID_1449749510" CREATED="1715163219075" MODIFIED="1715163369127"><richcontent TYPE="DETAILS">
 <html>
@@ -828,10 +813,808 @@
       用于描述接收MAC帧数据的。如果某个MAC帧数据接收者也是STA,那么RA和DA一样。但如果接收者不是无线工作站,而是比如以太网中的某台PC,那么DA就是该机器的MAC地址,而RA则是AP的MAC地址。这就表明该帧将先发给AP,然后由AP转发给PC
     </p>
   </body>
+</html></richcontent>
+</node>
+<node TEXT="Address 1 Address 2 Address 3" ID="ID_1813085987" CREATED="1715163887259" MODIFIED="1715163927292"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      MAC帧头中包含四个Address域,在不同的情况下,每个域中包含不同的地址。原则是Address 1代表接收地址,Address 2代表发送端地址,Address 3辅助用,Address 4用于无线桥接或Mesh BSS网络中。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="Sequence Control域" ID="ID_654884796" CREATED="1715163979011" MODIFIED="1715164017190"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Sequence Control域长16位,前4位代表片段编号(Fragment Number),后12位为帧顺序编号(Sequence Number)
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="Sequence Number" ID="ID_1495734847" CREATED="1715164175035" MODIFIED="1715164246446"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      STA每次发送数据帧时 都会设置一个帧顺序编号。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Fragment Number" ID="ID_1841985791" CREATED="1715164176427" MODIFIED="1715164301629"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      用于控制分片帧。如果数据量太大,则MAC层会将其分片发送。每个分片帧都有对应的分片编号
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="控制帧" ID="ID_1748523539" CREATED="1715164366362" MODIFIED="1715164434031"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      控制帧的作用包括协助数据帧的传递、管理无线媒介的访问等。
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="RTS(Request To Send)" ID="ID_660417020" CREATED="1715164456794" MODIFIED="1715164459843"/>
+<node TEXT="CTS(Clear To Send)" ID="ID_1229549608" CREATED="1715164470380" MODIFIED="1715164477124"/>
+<node TEXT="ACK" ID="ID_873446329" CREATED="1715164503266" MODIFIED="1715164542766"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      802.11中,MAC以及任何数据的传输都需要得到肯定确认
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="PS-POLL" ID="ID_1316180776" CREATED="1715164558787" MODIFIED="1715164590894"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      该控制帧被STA用于从AP中获取因省电模式而缓存的数据。其中AID的值是STA和AP关联时,由AP赋给该STA的
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="管理帧" ID="ID_864685271" CREATED="1715164367996" MODIFIED="1715164712531">
+<node TEXT="Beacon(信标)帧" ID="ID_27530989" CREATED="1715164747378" MODIFIED="1715231965124"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      AP定时发送Beacon帧用来声明某个网络。这样,STA通过Beacon帧就知道该网络还存在
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Association Request/Response(关联请求/回复)帧" ID="ID_67007387" CREATED="1715164763138" MODIFIED="1715232292571"><richcontent TYPE="DETAILS" HIDDEN="true">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      当STA需要关联到某个AP时,将发送此帧。针对Association Request帧,AP会回复一个Association Response帧用于通知关联请求处理结果。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Probe Request/Response(探测请求/回复)帧" ID="ID_144526142" CREATED="1715164783370" MODIFIED="1715232203139"><richcontent TYPE="DETAILS" HIDDEN="true">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      STA除了监听Beacon帧以了解网络信息外,还可以发送Probe Request帧用于搜索周围的无线网络。规范要求由送出Beacon帧的STA回复Probe Response帧,这样,在基础结构型网络中,Beacon帧只能由AP发送,故Probe Response也由AP发送。IBSS中,STA轮流发送Beacon帧,故Probe Response由最后一次发送Beacon帧的STA发送。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Authentication/Deauthentication(认证/取消认证)帧" ID="ID_996050075" CREATED="1715164802866" MODIFIED="1715232329863"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      用于身份验证
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="数据帧" ID="ID_244095311" CREATED="1715232361838" MODIFIED="1715232384814"/>
+</node>
+</node>
+<node TEXT="802.11 MAC管理实体" POSITION="top_or_left" ID="ID_1074464347" CREATED="1715233777405" MODIFIED="1715233782030">
+<node TEXT="Scan" ID="ID_351735953" CREATED="1715247236274" MODIFIED="1715247284434"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      用于扫描周围的无线网络
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="Scan.request" ID="ID_1227916863" CREATED="1715247415030" MODIFIED="1715247442500"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      MLME-SCAN.request(
+    </p>
+    <p>
+      BSSType,BSSID,SSID,ScanType,ProbeDelay,
+    </p>
+    <p>
+      ChannelList,MinChannelTime,MaxChannelTime,
+    </p>
+    <p>
+      RequestInformation, SSID List,
+    </p>
+    <p>
+      ChannelUsage,AccessNetworkType,HESSID,MeshID,Vendo
+    </p>
+    <p>
+      )
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="ACTIVE模式" ID="ID_626080100" CREATED="1715247665334" MODIFIED="1715247724270"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      STA在每个Channel(信道)上都会发出Probe Request帧用来搜索某个网络。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="PASSIVE模式" ID="ID_1506549477" CREATED="1715247729934" MODIFIED="1715247776369"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      STA不发送任何信号,只是在ChannelList中各个信道间不断切换并等待Beacon帧。
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="Scan.confirm" ID="ID_1583414436" CREATED="1715248933229" MODIFIED="1715248953745"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      MLME-SCAN.confirm(
+    </p>
+    <p>
+      BSSDescriptionSet,
+    </p>
+    <p>
+      BSSDescriptionFromMeasurementPilotSet,
+    </p>
+    <p>
+      ResultCode,VendorSpecificInfo
+    </p>
+    <p>
+      )
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="Authenticate" ID="ID_1545655858" CREATED="1715247250727" MODIFIED="1715247305027"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      关联到某个AP前,用于STA的身份验证
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="MLME-Authenticate.request" ID="ID_1870068740" CREATED="1715250310629" MODIFIED="1715250313541"/>
+<node TEXT="MLME-Authenticate.confirm" ID="ID_1822932021" CREATED="1715250338925" MODIFIED="1715250341924"/>
+<node TEXT="MLME-Authenticate.indication" ID="ID_352088639" CREATED="1715250359996" MODIFIED="1715250362461"/>
+<node TEXT="MLME-Authenticate.response" ID="ID_451176413" CREATED="1715250380029" MODIFIED="1715250382700"/>
+</node>
+<node TEXT="Associate" ID="ID_62034077" CREATED="1715247264358" MODIFIED="1715302816627"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      关联某个AP。关联成功后,STA就正式加入无线网络
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="MLME-ASSOCIATE.request" ID="ID_199498770" CREATED="1715250425724" MODIFIED="1715250427749"/>
+<node TEXT="MLME-ASSOCIATE.confirm" ID="ID_1433199165" CREATED="1715250446444" MODIFIED="1715250448581"/>
+<node TEXT="MLME-ASSOCIATE.indication" ID="ID_1301186700" CREATED="1715250472172" MODIFIED="1715250474997"/>
+<node TEXT="MLME-ASSOCIATE.response" ID="ID_911203633" CREATED="1715250501108" MODIFIED="1715250504333"/>
+</node>
+</node>
+<node TEXT="无线网络安全技术" POSITION="bottom_or_right" ID="ID_497165585" CREATED="1715304302691" MODIFIED="1715304306596">
+<node TEXT="数据的完整性(Integrity)" ID="ID_384963906" CREATED="1715304320122" MODIFIED="1715304323571"/>
+<node TEXT="数据的机密性(Confidentiality)" ID="ID_1000240147" CREATED="1715304334242" MODIFIED="1715304337779"/>
+<node TEXT="身份验证和访问控制(Authentication and&#xa;Access Control)" ID="ID_1932275678" CREATED="1715304353970" MODIFIED="1715304357523"/>
+<node TEXT="WEP" ID="ID_1318526088" CREATED="1715323764270" MODIFIED="1715323816077"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Wired Equivalent Privacy,有线等效加密
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="开放系统身份验证" ID="ID_1926216783" CREATED="1715324758083" MODIFIED="1715324773854"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Open System Authentication
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="共享密钥身份认证" ID="ID_1634007831" CREATED="1715324835650" MODIFIED="1715324851803"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Shared Key Authentication
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="WPA" ID="ID_1949763878" CREATED="1715323837541" MODIFIED="1715323859661"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Wi-Fi Protected Access
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="WPA2" ID="ID_1538097217" CREATED="1715323895563" MODIFIED="1715323927432"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      RSN(Robust Security Network,强健安全网络)
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="EAP" ID="ID_1261481114" CREATED="1715327751145" MODIFIED="1715564063293"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Extensible Authentication Protocol)
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Authenticator" ID="ID_1814993268" CREATED="1715327806513" MODIFIED="1715327821889"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (验证者)
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Supplicant" ID="ID_698225959" CREATED="1715327841152" MODIFIED="1715327864685"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (验证申请者)
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="BAS" ID="ID_533602893" CREATED="1715329954319" MODIFIED="1715330044684"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Backend Authentication Server
+    </p>
+    <p>
+      后端认证服务器)
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="AAA" ID="ID_141112047" CREATED="1715330159376" MODIFIED="1715330181124"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Authentication、Authorization and
+    </p>
+    <p>
+      Accounting,认证、授权和计费)
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="EAP Server" ID="ID_454371173" CREATED="1715330669376" MODIFIED="1715330672535"/>
+<node TEXT="RSNA" ID="ID_1657683548" CREATED="1715390708295" MODIFIED="1715390729331"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Robust Secure Network Association,强健安全网络联合)
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="Pairwise key" ID="ID_1128125005" CREATED="1715563040938" MODIFIED="1715563044963"/>
+<node TEXT="PMK" ID="ID_17771756" CREATED="1715563093354" MODIFIED="1715563119619"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      在STA中设置的密码叫PMK(Pairwise Master Key,成对主密钥)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="PSK" ID="ID_141449054" CREATED="1715563169131" MODIFIED="1715563182548"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      预共享密钥(Pre-Shared Key,PSK)
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="WPA/WPA2-PSK" ID="ID_1446170137" CREATED="1715563230402" MODIFIED="1715563258923"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &quot;WPA/WPA2-PSK&quot;。由于适用家庭环境,所以有些无线路由器设置界面中也叫&quot;WPA/WPA2-个人&quot;(WFA认证名为&quot;WPA/WPA2-Personal&quot;)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="PMK和Authenticator Server" ID="ID_246115212" CREATED="1715563740939" MODIFIED="1715563806614"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      到&quot;WPA/WPA2-企业&quot;(有时叫“WPA或WPA2”,WFA认证名为&quot;WPA/WPA2-Enterprise&quot;) 要求设置RADIUS服务器地址
+    </p>
+  </body>
 </html>
 </richcontent>
 </node>
 </node>
+<node TEXT="PTK" ID="ID_847584338" CREATED="1715565207756" MODIFIED="1715565216917"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Pairwise Transient Key,成对临时Key)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="EAPOL KEK" ID="ID_16951174" CREATED="1715565376564" MODIFIED="1715565481518"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Key Encryption Key)用来加密密钥生成消息
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="EAPOL KCK" ID="ID_1276027436" CREATED="1715565420420" MODIFIED="1715565465608"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (Key Confirmation Key)用于计算密钥
+    </p>
+    <p>
+      生成消息的完整性校验值
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="PMKSA" ID="ID_910927483" CREATED="1715566996606" MODIFIED="1715567044207"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      PMK缓存信息的名称叫PMKSA(PMK Security Association),它包括AP的MAC地址、PMK的生命周期(lifetime),以及PMKID(PMK IDentifier,用于标示这个PMKSA,其值由PMK、AP的MAC地址、STA的MAC地址等信息用Hash计算得来)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="4-Way Handshake" ID="ID_713290608" CREATED="1715566301421" MODIFIED="1715566303174">
+<node TEXT="Authenticator生成一个Nonce(ANonce),然后利用EAPOL-Key消息将其发给Supplicant" ID="ID_224927459" CREATED="1715566338134" MODIFIED="1715566458782"/>
+<node TEXT="Supplicant根据ANonce、自己生成的一个Nonce(SNonce)、自己所设置的PMK和Authenticator的MAC地址等信息进行密钥派生。Supplicant随后将SNonce以及一些信息通过第二个EAPOL-Key发送给Authenticator。" ID="ID_762275645" CREATED="1715566366853" MODIFIED="1715566453505"/>
+<node TEXT="如果Supplicant密钥正确,则 Authenticator也进行密钥派生。此后,Authenticator将发送第三个EAPOL-Key给&#xa;Supplicant" ID="ID_546482551" CREATED="1715566419342" MODIFIED="1715566432663"/>
+<node TEXT="Supplicant最后发送一次EAPOL-Key给Authenticator用于确认" ID="ID_411471746" CREATED="1715566487663" MODIFIED="1715566493494"/>
+<node TEXT="双方将安装(Install)Key。Install的意思是指使用它们来对数据进行加密。&#xa;Supplicant和Authenticator就此完成密钥派生和组对,双方可以正常进行通信了" ID="ID_513815891" CREATED="1715566524653" MODIFIED="1715566543144"/>
+</node>
+</node>
+</node>
+<node TEXT="Linux Wi-Fi编程API" POSITION="top_or_left" ID="ID_854712954" CREATED="1715568021367" MODIFIED="1715568025728">
+<node TEXT="cfg80211" ID="ID_710439021" CREATED="1715568054407" MODIFIED="1715568070872"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      驱动开发
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="nl80211" ID="ID_481081753" CREATED="1715568085647" MODIFIED="1715568116601"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      nl80211 API供用户空间进程使用以操作那些利用cfg80211 API开发的无线网卡驱动
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="netlink" ID="ID_302598738" CREATED="1715570825914" MODIFIED="1715570850661"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      netlink是Linux平台上一种基于socket的IPC通信机制,它支持:
+    </p>
+    <p>
+      ·用户空间进程和Kernel通信。
+    </p>
+    <p>
+      ·用户空间中进程间的通信。
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="libnl" ID="ID_1299441575" CREATED="1715570897098" MODIFIED="1715571908039"><richcontent TYPE="DETAILS" HIDDEN="true">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      LA.QSSI.14.0.r1/LINUX/android/external/libnl/
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      LA.QSSI.14.0.r1/LINUX/android/external/libnl/include/linux-private/linux/netlink.h
+    </p>
+    <p>
+      
+    </p>
+    <pre>struct sockaddr_nl {
+&#x9;__kernel_sa_family_t&#x9;nl_family;&#x9;/* AF_NETLINK&#x9;*/
+&#x9;unsigned short&#x9;nl_pad;&#x9;&#x9;/* zero&#x9;&#x9;*/
+&#x9;__u32&#x9;&#x9;nl_pid;&#x9;&#x9;/* port ID&#x9;*/
+       &#x9;__u32&#x9;&#x9;nl_groups;&#x9;/* multicast groups mask */
+};</pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="nl80211实例" ID="ID_1535032198" CREATED="1715675485495" MODIFIED="1715675519896"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      nl80211的核心就是通过netlink机制向Kernel中的无线网卡驱动发送特定的消息。
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="driver_nl80211.c::wpa_driver_nl80211_scan" ID="ID_18200743" CREATED="1715675705004" MODIFIED="1715675828824"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      // 创建nl80211消息
+    </p>
+    <p>
+      msg = nl80211_scan_common(dr v,NL80211_CMD_TRIGGER_SCAN, params);
+    </p>
+    <p>
+      //发送netlink消息
+    </p>
+    <p>
+      ret = send_and_recv_msgs(dr v, msg, NULL, NULL);
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="wext" ID="ID_30084884" CREATED="1715568211304" MODIFIED="1715568264039"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Linux Wireless Extensions。一般缩写为wex或wext。这套API使得用户空间的程序能通过ioctl函数来控制无线网卡驱动
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="" ID="ID_539975360" CREATED="1715568797615" MODIFIED="1715568870690"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      LA.QSSI.14.0.r1/LINUX/android/external/kernel-headers/original/uapi/linux/wireless.h
+    </p>
+    <p>
+      
+    </p>
+    <pre>#define WIRELESS_EXT&#x9;22</pre>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="" ID="ID_238666043" CREATED="1715569055081" MODIFIED="1715569082707"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      wext API在设计时参考了系统中现有数据结构及命名方式。作为区分,wext中几乎所有数据结构、类型、宏等名字中都带一个w以代表wireless。如iwreq结构
+    </p>
+    <p>
+      体,其对应的普通数据结构类型是ifreq。
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="wext API使用实例" ID="ID_1392993926" CREATED="1715569251488" MODIFIED="1715569254754">
+<node TEXT="wpa_supplicant" ID="ID_321717616" CREATED="1715569334032" MODIFIED="1715569358739"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      它是一个运行于用户空间的专门和无线网卡进行交互的程序
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="wpa_driver_wext_scan" ID="ID_1644238220" CREATED="1715570357810" MODIFIED="1715570582006"><richcontent TYPE="DETAILS" HIDDEN="true">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre>/**
+ * wpa_driver_wext_scan - Request the driver to initiate scan
+ * @priv: Pointer to private wext data from wpa_driver_wext_init()
+ * @param: Scan parameters (specific SSID to scan for (ProbeReq), etc.)
+ * Returns: 0 on success, -1 on failure
+ */
+int wpa_driver_wext_scan(void *priv, struct wpa_driver_scan_params *params)
+{
+&#x9;struct wpa_driver_wext_data *drv = priv;
+&#x9;struct iwreq iwr;
+&#x9;int ret = 0, timeout;
+&#x9;struct iw_scan_req req;
+&#x9;const u8 *ssid = params-&gt;ssids[0].ssid;
+&#x9;size_t ssid_len = params-&gt;ssids[0].ssid_len;
+
+&#x9;if (ssid_len &gt; IW_ESSID_MAX_SIZE) {
+&#x9;&#x9;wpa_printf(MSG_DEBUG, &quot;%s: too long SSID (%lu)&quot;,
+&#x9;&#x9;&#x9;   __FUNCTION__, (unsigned long) ssid_len);
+&#x9;&#x9;return -1;
+&#x9;}
+
+&#x9;os_memset(&amp;iwr, 0, sizeof(iwr));
+&#x9;os_strlcpy(iwr.ifr_name, drv-&gt;ifname, IFNAMSIZ);
+
+&#x9;if (ssid &amp;&amp; ssid_len) {
+&#x9;&#x9;os_memset(&amp;req, 0, sizeof(req));
+&#x9;&#x9;req.essid_len = ssid_len;
+&#x9;&#x9;req.bssid.sa_family = ARPHRD_ETHER;
+&#x9;&#x9;os_memset(req.bssid.sa_data, 0xff, ETH_ALEN);
+&#x9;&#x9;os_memcpy(req.essid, ssid, ssid_len);
+&#x9;&#x9;iwr.u.data.pointer = (caddr_t) &amp;req;
+&#x9;&#x9;iwr.u.data.length = sizeof(req);
+&#x9;&#x9;iwr.u.data.flags = IW_SCAN_THIS_ESSID;
+&#x9;}
+
+&#x9;if (ioctl(drv-&gt;ioctl_sock, SIOCSIWSCAN, &amp;iwr) &lt; 0) {
+&#x9;&#x9;wpa_printf(MSG_ERROR, &quot;ioctl[SIOCSIWSCAN]: %s&quot;,
+&#x9;&#x9;&#x9;   strerror(errno));
+&#x9;&#x9;ret = -1;
+&#x9;}
+
+&#x9;/* Not all drivers generate &quot;scan completed&quot; wireless event, so try to
+&#x9; * read results after a timeout. */
+&#x9;timeout = 10;
+&#x9;if (drv-&gt;scan_complete_events) {
+&#x9;&#x9;/*
+&#x9;&#x9; * The driver seems to deliver SIOCGIWSCAN events to notify
+&#x9;&#x9; * when scan is complete, so use longer timeout to avoid race
+&#x9;&#x9; * conditions with scanning and following association request.
+&#x9;&#x9; */
+&#x9;&#x9;timeout = 30;
+&#x9;}
+&#x9;wpa_printf(MSG_DEBUG, &quot;Scan requested (ret=%d) - scan timeout %d &quot;
+&#x9;&#x9;   &quot;seconds&quot;, ret, timeout);
+&#x9;eloop_cancel_timeout(wpa_driver_wext_scan_timeout, drv, drv-&gt;ctx);
+&#x9;eloop_register_timeout(timeout, 0, wpa_driver_wext_scan_timeout, drv,
+&#x9;&#x9;&#x9;       drv-&gt;ctx);
+
+&#x9;return ret;
+}</pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="iw" ID="ID_534689290" CREATED="1715568668665" MODIFIED="1715568695900"><richcontent TYPE="DETAILS" HIDDEN="true">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &quot;iw&quot; 是 &quot;wireless tools for Linux&quot; 的缩写，是一个用于配置和管理无线网络接口的命令行工具。&quot;iw&quot; 命令通常用于以下一些常见的操作：
+    </p>
+    <ol>
+      <li>
+        <p>
+          查看无线网络接口信息：使用 &quot;iw dev&quot; 命令可以查看当前系统中的无线网络接口信息，包括接口名称、支持的频段、信号强度等。
+        </p>
+      </li>
+      <li>
+        <p>
+          扫描可用的无线网络：通过 &quot;iw dev <interface>&#xa0;scan&quot; 命令可以扫描周围可用的无线网络，并列出它们的SSID、信号强度等信息。</interface>
+        </p>
+      </li>
+      <li>
+        <p>
+          连接到无线网络：使用 &quot;iw dev <interface>&#xa0;connect <ssid>&quot; 命令可以连接到指定的无线网络，需要输入密码等连接信息。</ssid></interface>
+        </p>
+      </li>
+      <li>
+        <p>
+          配置无线网络接口：可以使用 &quot;iw&quot; 命令来配置无线网络接口的各种参数，如设置频道、功率、传输速率等。
+        </p>
+      </li>
+      <li>
+        <p>
+          监控无线网络流量：&quot;iw&quot; 命令还可以用于监控无线网络接口的数据流量和传输速率，帮助用户了解网络使用情况。
+        </p>
+      </li>
+    </ol>
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 </node>
