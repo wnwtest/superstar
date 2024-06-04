@@ -456,7 +456,7 @@
     </p>
   </body>
 </html></richcontent>
-<node TEXT="DNSmasq" ID="ID_912459616" CREATED="1715047397279" MODIFIED="1715047745595"><richcontent TYPE="DETAILS">
+<node TEXT="DNSmasq" ID="ID_912459616" CREATED="1715047397279" MODIFIED="1715047745595"><richcontent TYPE="DETAILS" HIDDEN="true">
 <html>
   <head>
     
