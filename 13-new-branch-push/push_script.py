@@ -11,7 +11,11 @@ def push_with_retry(repo_path, remote_name, branch_name):
             print('Successfully pushed {} to {} in {}'.format(branch_name, remote_name, repo_path))
         except subprocess.CalledProcessError as e:
             error_message = e.output.decode('utf-8')
-            print('Push to {} in {} failed with error: {}'.format(remote_name, repo_path, error_message))
+            try:
+                print('Push to {} in {} failed with error: {}'.format(remote_name, repo_path, error_message))
+            except UnicodeEncodeError:
+                error_message = error_message.encode('utf-8')
+                print('Push to {} in {} failed with error: {}'.format(remote_name, repo_path, error_message))
             if 'Could not read from remote repository' in error_message or 'incorrect signature' in error_message:
                 print('Retry pushing due to error: {}'.format(error_message))
                 success = False

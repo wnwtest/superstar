@@ -1,6 +1,6 @@
 <map version="freeplane 1.11.5">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="wpa_supplicant" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="Freemind_Link_1513112588" CREATED="1153430895318" MODIFIED="1715996200579">
+<node TEXT="wpa_supplicant" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="Freemind_Link_1513112588" CREATED="1153430895318" MODIFIED="1717633857001">
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <hook NAME="MapStyle" background="#ffffff">
     <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" associatedTemplateLocation="template:/light_super_hero_template.mm" fit_to_viewport="false"/>
@@ -91,8 +91,12 @@
     <p>
       实现了Station对无线网络进行管理和控制
     </p>
+    <p>
+      <code>wpa_supplicant</code>是一个关键的组件，用于处理所有与Wi-Fi相关的安全性问题。它主要负责Wi-Fi网络的扫描、身份验证、关联以及最终的连接
+    </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node TEXT="src" POSITION="top_or_left" ID="ID_417374464" CREATED="1715996094168" MODIFIED="1715996098248">
 <node TEXT="android.cfg" POSITION="top_or_left" ID="ID_1193448489" CREATED="1715996029255" MODIFIED="1716189510665"><richcontent TYPE="DETAILS">
 <html>
@@ -346,7 +350,7 @@ network={
   </body>
 </html></richcontent>
 </node>
-<node TEXT="wpa_supplicant_8_lib" POSITION="top_or_left" ID="ID_454360011" CREATED="1716190434694" MODIFIED="1716190486945"><richcontent TYPE="DETAILS">
+<node TEXT="wpa_supplicant_8_lib" POSITION="top_or_left" ID="ID_454360011" CREATED="1716190434694" MODIFIED="1717727972415"><richcontent TYPE="DETAILS">
 <html>
   <head>
     
@@ -359,7 +363,8 @@ network={
       wpa_supplicant依赖的静态库
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node TEXT="wpa_supplicant命令" POSITION="bottom_or_right" ID="ID_1073587356" CREATED="1716192246303" MODIFIED="1716192333456"><richcontent TYPE="DETAILS">
 <html>
