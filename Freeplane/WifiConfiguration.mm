@@ -3,7 +3,7 @@
 <node TEXT="WifiConfiguration" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="Freemind_Link_1513112588" CREATED="1153430895318" MODIFIED="1718329454460">
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <hook NAME="MapStyle" background="#ffffff">
-    <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" fit_to_viewport="false" associatedTemplateLocation="template:/light_super_hero_template.mm"/>
+    <properties show_icon_for_attributes="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" associatedTemplateLocation="template:/light_super_hero_template.mm" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
@@ -92,20 +92,95 @@
       通过一个实例来分析加密类型如何被支持
     </p>
   </body>
-</html>
-</richcontent>
-<node TEXT="KeyMgmt" ID="ID_1794629493" CREATED="1718330159071" MODIFIED="1718330193528"><richcontent TYPE="DETAILS">
+</html></richcontent>
+<node TEXT="KeyMgmt" ID="ID_1794629493" CREATED="1718330159071" MODIFIED="1719194496903"><richcontent TYPE="DETAILS">
 <html>
   <head>
     
   </head>
   <body>
     <p>
-      Recognized key management schemes.
+      Recognized key management schemes. LA.QSSI.14.0.r1/LINUX/android/external/wpa_supplicant_8/wpa_supplicant/aidl/sta_iface.cpp
     </p>
   </body>
 </html>
 </richcontent>
+<node TEXT="WPA_DRIVER_CAPA_KEY_MGMT_WPA | WPA_DRIVER_CAPA_KEY_MGMT_WPA2" ID="ID_1292851993" CREATED="1719194388511" MODIFIED="1719194418449">
+<node TEXT="KeyMgmtMask::WPA_EAP" ID="ID_1789945197" CREATED="1719194442009" MODIFIED="1719194449389"/>
+</node>
+<node TEXT="WPA_DRIVER_CAPA_KEY_MGMT_WPA_PSK |&#xa;&#x9;&#x9;&#x9;&#x9; WPA_DRIVER_CAPA_KEY_MGMT_WPA2_PSK" ID="ID_1846452412" CREATED="1719194528871" MODIFIED="1719194533872">
+<node TEXT="KeyMgmtMask::WPA_PSK" ID="ID_1974126744" CREATED="1719194536273" MODIFIED="1719194550034"/>
+</node>
+<node TEXT="ifdef CONFIG_WAPI_INTERFACE" ID="ID_656187218" CREATED="1719194601967" MODIFIED="1719194605092">
+<node TEXT="KeyMgmtMask::WAPI_PSK&#xa;KeyMgmtMask::WAPI_CERT" ID="ID_1948361481" CREATED="1719194606567" MODIFIED="1719194651635"/>
+</node>
+</node>
+<node TEXT="allowedKeyManagement" ID="ID_1862143260" CREATED="1718777965838" MODIFIED="1718777997907"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The set of key management protocols supported by this configuration.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="setSecurityParams" POSITION="top_or_left" ID="ID_1685392834" CREATED="1718777699012" MODIFIED="1718777795742"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre><span class="c">Set the various security params to correspond to the provided security type.This is accomplished by setting the various BitSets exposed in WifiConfiguration.</span></pre>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="wpa_driver_nl80211_capa" POSITION="bottom_or_right" ID="ID_1564630993" CREATED="1719292717625" MODIFIED="1719292973040"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      LA.QSSI.14.0.r1/LINUX/android/external/wpa_supplicant_8/src/drivers/driver_nl80211_capa.c
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="wpa_driver_nl80211_get_info" ID="ID_802685684" CREATED="1719292945923" MODIFIED="1719292950124">
+<node TEXT="get_nl80211_protocol_features" ID="ID_251818468" CREATED="1719293039648" MODIFIED="1719293069163"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre>static u32 get_nl80211_protocol_features(struct wpa_driver_nl80211_data *drv)
+{
+&#x9;u32 feat = 0;
+&#x9;struct nl_msg *msg;
+
+&#x9;msg = nlmsg_alloc();
+&#x9;if (!msg)
+&#x9;&#x9;return 0;
+
+&#x9;if (!nl80211_cmd(drv, msg, 0, NL80211_CMD_GET_PROTOCOL_FEATURES)) {
+&#x9;&#x9;nlmsg_free(msg);
+&#x9;&#x9;return 0;
+&#x9;}
+
+&#x9;if (send_and_recv_msgs(drv, msg, protocol_feature_handler, &amp;feat,
+&#x9;&#x9;&#x9;       NULL, NULL) == 0)
+&#x9;&#x9;return feat;
+
+&#x9;return 0;
+}</pre>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 </node>

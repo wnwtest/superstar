@@ -95,8 +95,7 @@
       <code>wpa_supplicant</code>是一个关键的组件，用于处理所有与Wi-Fi相关的安全性问题。它主要负责Wi-Fi网络的扫描、身份验证、关联以及最终的连接
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node TEXT="src" POSITION="top_or_left" ID="ID_417374464" CREATED="1715996094168" MODIFIED="1715996098248">
 <node TEXT="android.cfg" POSITION="top_or_left" ID="ID_1193448489" CREATED="1715996029255" MODIFIED="1716189510665"><richcontent TYPE="DETAILS">
 <html>
@@ -363,8 +362,7 @@ network={
       wpa_supplicant依赖的静态库
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node TEXT="wpa_supplicant命令" POSITION="bottom_or_right" ID="ID_1073587356" CREATED="1716192246303" MODIFIED="1716192333456"><richcontent TYPE="DETAILS">
 <html>
@@ -709,6 +707,193 @@ network={
 <node TEXT="rfkill_init" ID="ID_947111878" CREATED="1717149694260" MODIFIED="1717149696884"/>
 </node>
 <node TEXT="wpa_driver_nl80211_get_info" ID="ID_882904578" CREATED="1717558306967" MODIFIED="1717558310759"/>
+</node>
+<node TEXT="事件驱动机制" POSITION="top_or_left" ID="ID_442092699" CREATED="1719544302936" MODIFIED="1719544441175"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      eloop_run
+    </p>
+    <p>
+      void eloop_run(void)
+    </p>
+    <p>
+      {
+    </p>
+    <p>
+      fd_set *rfds, *wfds, *efds; // fd_set是select中用到的一种
+    </p>
+    <p>
+      参数类型
+    </p>
+    <p>
+      struct timeval _tv;
+    </p>
+    <p>
+      int res;
+    </p>
+    <p>
+      struct os_time tv, now;
+    </p>
+    <p>
+      // 事件驱动循环
+    </p>
+    <p>
+      while (!eloop.terminate &amp;&amp;
+    </p>
+    <p>
+      (!dl_list_empty(&amp;eloop.timeout) ||
+    </p>
+    <p>
+      eloop.readers.count &gt; 0 ||
+    </p>
+    <p>
+      eloop.writers.count &gt; 0 || eloop.exceptions.count &gt;
+    </p>
+    <p>
+      0)) {
+    </p>
+    <p>
+      struct eloop_timeout *timeout;
+    </p>
+    <p>
+      // 判断是否有超时事件需要等待
+    </p>
+    <p>
+      timeout = dl_list_first(&amp;eloop.timeout, struct
+    </p>
+    <p>
+      eloop_timeout,list);
+    </p>
+    <p>
+      if (timeout) {
+    </p>
+    <p>
+      os_get_time(&amp;now);
+    </p>
+    <p>
+      if (os_time_before(&amp;now, &amp;timeout-&gt;time))
+    </p>
+    <p>
+      os_time_sub(&amp;timeout-&gt;time, &amp;now, &amp;tv);
+    </p>
+    <p>
+      else
+    </p>
+    <p>
+      tv.sec = tv.usec = 0;
+    </p>
+    <p>
+      _tv.tv_sec = tv.sec;
+    </p>
+    <p>
+      _tv.tv_usec = tv.usec;
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      // 将外界设置的读事件添加到对应的fd_set中
+    </p>
+    <p>
+      eloop_sock_table_set_fds(&amp;eloop.readers, rfds);
+    </p>
+    <p>
+      ......// 设置写、异常事件到fd_set中
+    </p>
+    <p>
+      // 调用select函数
+    </p>
+    <p>
+      res = select(eloop.max_sock + 1, rfds, wfds,
+    </p>
+    <p>
+      efds,timeout ? &amp;_tv : NULL);
+    </p>
+    <p>
+      if(res &amp;lt; 0) {......// 错误处理}
+    </p>
+    <p>
+      // 先处理信号事件
+    </p>
+    <p>
+      eloop_process_pending_signals();
+    </p>
+    <p>
+      // 判断是否有超时事件发生
+    </p>
+    <p>
+      timeout = dl_list_first(&amp;eloop.timeout, struct
+    </p>
+    <p>
+      eloop_timeout,list);
+    </p>
+    <p>
+      if (timeout) {
+    </p>
+    <p>
+      os_get_time(&amp;now);
+    </p>
+    <p>
+      if (!os_time_before(&amp;now, &amp;timeout-&gt;time)) {
+    </p>
+    <p>
+      void *eloop_data = timeout-&gt;eloop_data;
+    </p>
+    <p>
+      void *user_data = timeout-&gt;user_data;
+    </p>
+    <p>
+      eloop_timeout_handler handler = timeout-
+    </p>
+    <p>
+      &gt;handler ;
+    </p>
+    <p>
+      eloop_remove_timeout(timeout); // 注
+    </p>
+    <p>
+      意，超时事件只执行一次
+    </p>
+    <p>
+      handler(eloop_data, user_data); // 处理超
+    </p>
+    <p>
+      时事件
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      ......// 处理读/写/异常事件。方法和下面这个函数类似
+    </p>
+    <p>
+      eloop_sock_table_dispatch(&amp;eloop.readers, rfds);
+    </p>
+    <p>
+      ......// 处理wfds和efds
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      out:
+    </p>
+    <p>
+      return;
+    </p>
+    <p>
+      }
+    </p>
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 </map>
