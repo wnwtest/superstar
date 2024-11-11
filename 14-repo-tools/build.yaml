@@ -1,0 +1,10 @@
+project:
+  model:
+    internal: "UZQ00801"
+    external: "PAD5"
+  chip:
+    platform: "SM4350Pro"
+  version:
+    android: "V"
+  date: "241111"
+  baseline: "Mannar.LA.2.5.1"

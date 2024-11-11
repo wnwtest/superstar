@@ -62,7 +62,7 @@ def process_apk(apk_path, output_dir):
     # Extract lib files if exist
     lib_files = {}
     #architectures = ['arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64']
-    architectures = ['arm64-v8a']
+    architectures = ['arm64-v8a', 'armeabi-v7a']
     with zipfile.ZipFile(apk_path, 'r') as zip_ref:
         for file in zip_ref.namelist():
             for arch in architectures:

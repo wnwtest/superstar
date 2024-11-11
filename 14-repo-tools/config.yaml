@@ -1,0 +1,13 @@
+operations:
+  - file: "LA.VENDOR.14.3.1.r1.xml"
+    name_prefix: "Mannar.LA.2.5.1/LA.VENDOR.14.3.1.r1/"
+    path_prefix: "LA.VENDOR.14.3.1.r1/LINUX/android/"
+  - file: "KERNEL.PLATFORM.3.0.r6.xml"
+    name_prefix: "Mannar.LA.2.5.1/LA.VENDOR.14.3.1.r1/"
+    path_prefix: "LA.VENDOR.14.3.1.r1/LINUX/android/"
+  - file: "LA.QSSI.14.0.r1.xml"
+    name_prefix: "Mannar.LA.2.5.1/LA.QSSI.14.0.r1/"
+    path_prefix: "LA.VENDOR.14.3.1.r1/LINUX/android/"
+  - file: "LA.QSSI.15.0.xml"
+    name_prefix: "Mannar.LA.2.5.1/LA.QSSI.15.0/"
+    path_prefix: "LA.QSSI.15.0/LINUX/android/"
