@@ -1,7 +1,7 @@
 project:
   model:
     internal: "UZQ00801"
-    external: "PAD5"
+    external: "PDA5"
   chip:
     platform: "SM4350Pro"
   version:
