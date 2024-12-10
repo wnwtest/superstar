@@ -3,7 +3,20 @@ import sys
 import subprocess
 import os
 import yaml
+import argparse
+'''
+# 默认推送分支（从 YAML 解析）
+python script.py
 
+
+# 指定分支名推送
+python script.py new_branch_name
+
+
+# 删除分支
+python script.py branch_to_delete --delete
+
+'''
 def validate_build_yaml():
     """验证 build.yaml 文件的完整性和正确性"""
     yaml_path = 'build.yaml'
@@ -34,7 +47,43 @@ def validate_build_yaml():
     except Exception as e:
         print("验证 build.yaml 时发生错误: {}".format(str(e)))
         return False
-
+def get_repo_root_path_from_yaml(yaml_path='build.yaml'):
+    """
+    从YAML文件中获取repo根目录路径
+    
+    Args:
+        yaml_path (str): YAML文件路径
+    
+    Returns:
+        str: repo根目录路径
+    """
+    try:
+        with open(yaml_path, 'r') as f:
+            config = yaml.safe_load(f)
+        # 从project中获取repo根目录路径
+        repo_root_path = ''
+        if isinstance(config, dict):
+            repo_root_path = config.get('project', {}).get('repo_root_path', '')
+        
+        # 如果yaml中未指定路径，则使用当前脚本所在目录的父目录
+        if not repo_root_path:
+            # 获取当前脚本所在目录的父目录
+            repo_root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        # 转换为绝对路径
+        repo_root_path = os.path.abspath(repo_root_path)
+        
+        # 验证是否是一个有效的repo根目录
+        if not os.path.exists(os.path.join(repo_root_path, '.repo')):
+            print("警告：{} 不是一个有效的repo根目录".format(repo_root_path))
+            return None
+        
+        return repo_root_path
+    
+    except Exception as e:
+        print("读取repo根目录路径失败: {}".format(e))
+        return None
+    
 def safe_str(value):
     """确保值被转换为字符串"""
     if value is None:
@@ -192,42 +241,41 @@ def push_with_retry(repo_path, branch_name, delete=False):
     return success, False
 
 def main():
-    # 默认分支名处理
-    new_branch = None
-    baseline = None
-    delete = False
-    should_push = False
-    model_ext = False
-    # 根据参数数量和内容处理分支名
-    if len(sys.argv) < 2:
-        if not validate_build_yaml():
-            print("build.yaml 配置不完整或不正确")
-            sys.exit(1)
-        # 如果没有提供参数，尝试从 build.yaml 解析
-        new_branch, baseline,model_ext = parse_build_yaml()
+    # 参数解析
+    parser = argparse.ArgumentParser(description='Repo 分支管理工具')
+    parser.add_argument('branch', nargs='?', help='分支名（可选）')
+    parser.add_argument('--delete', action='store_true', help='删除分支')
+    parser.add_argument('--push', action='store_true', help='推送分支')
+    args = parser.parse_args()
+    # 验证操作的唯一性
+    operation_count = sum([args.delete, args.push])
+    if operation_count > 1:
+        print("错误：不能同时使用 --delete 和 --push")
+        sys.exit(1)
+    # 验证 YAML 配置
+    if not validate_build_yaml():
+        print("build.yaml 配置不完整或不正确")
+        sys.exit(1)
+        # 确定分支名
+    if not args.branch:
+        new_branch, baseline, model_ext = parse_build_yaml()
         if not new_branch:
             print('请提供新分支名或确保 build.yaml 配置正确')
             sys.exit(1)
     else:
-        new_branch = sys.argv[1]
+        new_branch = args.branch
+        baseline = None
+        model_ext = None
+    # 获取仓库路径
+    repo_root = get_repo_root_path_from_yaml()
     
-    # 处理可选参数
-    if len(sys.argv) > 2:
-        action = sys.argv[2].lower()
-        delete = action == 'del'
-        should_push = action == 'push'
-    
-    # 如果没有从 build.yaml 解析 baseline，尝试读取
-    if not baseline:
-        try:
-            with open('build.yaml', 'r') as f:
-                config = yaml.safe_load(f)
-                baseline = config.get('project', {}).get('baseline')
-        except:
-            baseline = 'default_baseline'
-    
+    if not repo_root:
+        print("无法确定repo根目录")
+        sys.exit(1) 
+    # 切换到repo根目录
+    os.chdir(repo_root) 
     # 只在非删除操作时生成 repo 使用指导文档
-    if not delete:
+    if not args.delete and baseline:
         create_repo_guide(new_branch, baseline,model_ext)
     
     # 获取所有仓库路径
@@ -235,14 +283,14 @@ def main():
     repo_paths = output.strip().split('\n')
     
     # 执行操作到所有仓库
-    operation_type = "deletion" if delete else "push"
+    operation_type = "deletion" if  args.delete else "push"
     print("Starting %s operation for branch: %s" % (operation_type, new_branch))
     
     failed_repos = []
     skipped_repos = []
     
     for repo_path in repo_paths:
-        success, skipped = push_with_retry(repo_path, new_branch, delete)
+        success, skipped = push_with_retry(repo_path, new_branch,  args.delete)
         if not success:
             failed_repos.append(repo_path)
         elif skipped:
@@ -250,13 +298,13 @@ def main():
     
     # 重试失败的仓库
     retry_count = 0
-    max_retries = 3
+    max_retries = 5
     while failed_repos and retry_count < max_retries:
         retry_count += 1
         print("\nRetry attempt %d of %d" % (retry_count, max_retries))
         for repo_path in failed_repos[:]:
             print('Retrying operation for %s' % repo_path)
-            success, skipped = push_with_retry(repo_path, new_branch, delete)
+            success, skipped = push_with_retry(repo_path, new_branch,  args.delete)
             if success:
                 failed_repos.remove(repo_path)
                 if skipped:
@@ -264,7 +312,8 @@ def main():
     
     # 打印操作总结
     print("\nOperation Summary:")
-    print("%s operation completed." % ("Deletion" if delete else "Push"))
+    #print("%s operation completed." % ("Deletion" if  args.delete else "Push"))
+    print("{} operation completed.".format(operation_type.capitalize()))
     if skipped_repos:
         print("Skipped repositories (branch does not exist): %d" % len(skipped_repos))
         for repo in skipped_repos:
@@ -274,19 +323,9 @@ def main():
         print("\nFailed repositories: %d" % len(failed_repos))
         for repo in failed_repos:
             print("  - %s" % repo)
+        sys.exit(1)  # 如果有失败的仓库，以非零状态码退出
     else:
         print("\nAll operations completed successfully.")
-
-    # 如果需要推送，创建 manifest 文件
-    if should_push:
-        try:
-            import repo_cust_manger
-            manifest_file = repo_cust_manger.create_and_push_tag(new_branch)
-            print("Manifest 文件已创建: {}".format(manifest_file))
-        except ImportError:
-            print("警告: repo_cust_manger 包未安装，无法执行相关操作。")
-        except Exception as e:
-            print("发生未预期的错误: {}".format(str(e)))
 
 if __name__ == '__main__':
     main()

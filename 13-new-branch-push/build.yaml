@@ -1,0 +1,11 @@
+project:
+  model:
+    internal: "UZQ00703"
+    external: "UNC662"
+  chip:
+    platform: "SM6115"
+  version:
+    android: "V"
+  date: "241202"
+  baseline: "Kamorta.LA.3.0.1"
+  repo_root_path: "m16q_1128"

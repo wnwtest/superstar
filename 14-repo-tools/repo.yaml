@@ -1,0 +1,38 @@
+baseline:
+  product: Palawan.LA.2.0  # 基准产品的名称
+
+
+operations:  # 操作配置
+  - file: "LA.VENDOR.14.3.0.xml"
+    name_prefix: "LA.VENDOR.14.3.0.R1/"
+    path_prefix: "LA.VENDOR.14.3.0/LINUX/android/"
+  - file: "KERNEL.PLATFORM.3.0.xml"
+    name_prefix: "KERNEL.PLATFORM.3.0.R1/"
+    path_prefix: "LA.VENDOR.14.3.0/LINUX/android/"
+  - file: "LA.QSSI.14.0.xml"
+    name_prefix: "LA.QSSI.14.0.R1/"
+    path_prefix: "LA.VENDOR.14.3.0/LINUX/android/"
+  - file: "LA.QSSI.15.0.xml"
+    name_prefix: "LA.QSSI.15.0.R1/"
+    path_prefix: "LA.QSSI.15.0/LINUX/android/"
+  - file: "Snapdragon_Premium_High_2023.SPF.2.0.xml"
+    name_prefix: "modem/"
+    path_prefix: ""  
+projects:  # 项目配置
+  - manifest: manifests/LA.VENDOR.14.3.0_all_projects.xml  # 项目1的manifest文件
+    demo: ./manifest.git  # 项目1的示例路径
+    output: ./repositories/  # 项目1的输出路径
+  - manifest: manifests/LA.QSSI.15.0_all_projects.xml  # 项目2的manifest文件
+    demo: ./manifest.git  # 项目2的示例路径
+    output: ./repositories/  # 项目2的输出路径
+  - manifest: manifests/LA.QSSI.14.0_all_projects.xml  # 项目3的manifest文件
+    demo: ./manifest.git  # 项目3的示例路径
+    output: ./repositories/  # 项目3的输出路径
+  - manifest: manifests/KERNEL.PLATFORM.3.0_all_projects.xml  # 项目4的manifest文件
+    demo: ./manifest.git  # 项目4的示例路径
+    output: ./repositories/  # 项目4的输出路径
+  - manifest: manifests/Snapdragon_Premium_High_2023.SPF.2.0_all_projects.xml  # 项目5的manifest文件
+    demo: ./manifest.git  # 项目5的示例路径
+    output: ./repositories/  # 项目5的输出路径
+
+

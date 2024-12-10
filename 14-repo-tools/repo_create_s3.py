@@ -6,7 +6,7 @@ import shutil
 import argparse
 import xml.etree.ElementTree as ET
 import logging
-
+import yaml
 def setup_logging():
     """配置日志记录"""
     logging.basicConfig(
@@ -66,24 +66,30 @@ def create_repo(manifest_path, demo_path, output_dir):
 
         # 统计创建仓库数量
         repo_count = 0
-        updated_count = 0
 
         # 遍历所有project元素
         for project in root.findall('project'):
             name = project.get('name')
             
-            # 构建目标路径
+            # 构建目标路径，添加.git后缀
             target_path = os.path.join(output_dir, name + '.git')
             
             try:
-                # 创建完整的目录路径（包括所有父目录）
-                mkdir_p(os.path.dirname(target_path))
-                
-                # 如果目标目录已存在
+                # 如果目标目录已存在，先删除
                 if os.path.exists(target_path):
-                    # 删除已存在的目录
                     shutil.rmtree(target_path)
                     logging.info("已删除已存在的仓库: {}".format(target_path))
+                
+                # 创建父目录（如果不存在）
+                parent_dir = os.path.dirname(target_path)
+                try:
+                    if not os.path.exists(parent_dir):
+                        os.makedirs(parent_dir)
+                except OSError as exc:
+                    if exc.errno == errno.EEXIST and os.path.isdir(parent_dir):
+                        pass
+                    else:
+                        raise
                 
                 # 复制demo.git到目标路径
                 shutil.copytree(demo_path, target_path)
@@ -101,6 +107,38 @@ def create_repo(manifest_path, demo_path, output_dir):
     except Exception as e:
         logging.error("发生未知错误: {}".format(e))
 
+def load_yaml_config(yaml_path):    
+    try:
+        with open(yaml_path, 'r') as yaml_file:
+            sync_config = yaml.safe_load(yaml_file).get('projects', [])
+        
+        # 遍历 sync.yaml 中的配置
+        for config in sync_config:
+            # 获取配置项
+            manifest_path = config.get('manifest', '')
+            demo_path = config.get('demo', '')
+            output_dir = config.get('output', '')
+            
+            # 验证必要的配置项
+            if not manifest_path or not demo_path or not output_dir:
+                logging.error("配置不完整: 缺少 manifest, demo 或 output")
+                continue
+            
+            # 确保路径是绝对路径
+            manifest_path = os.path.abspath(manifest_path)
+            demo_path = os.path.abspath(demo_path)
+            output_dir = os.path.abspath(output_dir)
+            
+            logging.info("处理配置: Manifest={}, Demo={}, Output={}".format(
+                manifest_path, demo_path, output_dir))
+            
+            # 直接使用配置的输出目录创建仓库
+            create_repo(manifest_path, demo_path, output_dir)
+    
+    except yaml.YAMLError as yaml_error:
+        logging.error("解析 YAML 文件错误: {}".format(yaml_error))
+    except Exception as e:
+        logging.error("处理 sync.yaml 时发生错误: {}".format(e))
 def main():
     # 设置日志
     setup_logging()
@@ -111,31 +149,41 @@ def main():
     # 添加必需的命令行参数
     parser.add_argument('-m', '--manifest', 
                         type=validate_path, 
-                        required=True, 
                         help='manifest.xml文件路径')
     parser.add_argument('-d', '--demo', 
                         type=validate_path, 
-                        required=True, 
                         help='demo.git模板路径')
     parser.add_argument('-o', '--output', 
                         type=str, 
-                        required=True, 
                         help='输出目录')
-
+    parser.add_argument('-f', '--folder', 
+                        type=validate_path, 
+                        help='模板文件夹路径')
+    
+    parser.add_argument('-c', '--config', 
+                        help='YAML configuration file', 
+                        default='repo.yaml')
     # 如果没有参数，显示帮助信息
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
-
+    
     # 解析命令行参数
     try:
         args = parser.parse_args()
     except Exception as e:
         logging.error("参数解析错误: {}".format(e))
         sys.exit(1)
-
-    # 执行仓库创建
-    create_repo(args.manifest, args.demo, args.output)
-
+    
+    # 根据参数执行操作
+    if args.config:
+        # 处理文件夹中的 sync.yaml
+        load_yaml_config(args.config)
+    elif args.manifest and args.demo and args.output:
+        # 直接使用命令行参数创建仓库
+     create_repo(args.manifest, args.demo, args.output)
+    else:
+        logging.error("参数不完整，请提供完整的参数或文件夹路径")
+        sys.exit(1)
 if __name__ == '__main__':
     main()
