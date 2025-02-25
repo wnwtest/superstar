@@ -1,11 +1,11 @@
 project:
   model:
-    internal: "UZQ00703"
-    external: "UNC662"
+    internal: ""
+    external: "PDA5_MU"
   chip:
-    platform: "SM6115"
+    platform: "SM4350Pro"
   version:
     android: "V"
-  date: "241202"
-  baseline: "Kamorta.LA.3.0.1"
-  repo_root_path: "m16q_1128"
+  date: "250224"
+  baseline: "Mannar.LA.2.5.1"
+  repo_root_path: "UZQ00801_PDA5_SM4350Pro_V_241111"

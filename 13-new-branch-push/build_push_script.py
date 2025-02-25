@@ -24,7 +24,7 @@ def validate_build_yaml():
         with open(yaml_path, 'r') as f:
             config = yaml.safe_load(f)
             
-        # 定义必须存在的键
+        # 定义必须存在的键（但值可以为空）
         required_keys = [
             ('project', 'model', 'internal'),
             ('project', 'model', 'external'),
@@ -42,6 +42,11 @@ def validate_build_yaml():
                     print("缺少必需的配置键: {}".format(' -> '.join(key_path)))
                     return False
                 current = current[key]
+            
+            # 允许值为空字符串
+            if current is None:
+                print("配置值不能为 None: {}".format(' -> '.join(key_path)))
+                return False
             
         return True
     except Exception as e:
@@ -103,31 +108,44 @@ def parse_build_yaml():
         return None, None, None
     try:
         with open(yaml_path, 'r') as f:
-            # 使用 SafeLoader 来加载 YAML
             config = yaml.load(f, Loader=yaml.SafeLoader)
         
-        # 从配置中获取值
         project_config = config.get('project', {})
         model_config = project_config.get('model', {})
         
-        # 直接获取外部型号
+        # 获取外部型号
         model_ext = model_config.get('external', '')
         if isinstance(model_ext, (str, unicode)):
             model_ext = model_ext.strip('"\'')
         elif isinstance(model_ext, set):
             model_ext = list(model_ext)[0] if model_ext else ''
         
-        # 生成分支名组件
-        branch_components = [
-            safe_str(model_config.get('internal', '')),
-            safe_str(model_ext),
-            safe_str(project_config.get('chip', {}).get('platform', '')),
-            safe_str(project_config.get('version', {}).get('android', '')),
-            safe_str(project_config.get('date', ''))
-        ]
+        # 只收集非空值
+        branch_components = []
         
-        # 移除空字符串
-        branch_components = [comp for comp in branch_components if comp]
+        # 内部型号（如果不为空才添加）
+        internal = safe_str(model_config.get('internal', ''))
+        if internal and internal != '""' and internal != "''":
+            branch_components.append(internal)
+            
+        # 外部型号
+        if model_ext and model_ext != '""' and model_ext != "''":
+            branch_components.append(model_ext)
+            
+        # 平台
+        platform = safe_str(project_config.get('chip', {}).get('platform', ''))
+        if platform and platform != '""' and platform != "''":
+            branch_components.append(platform)
+            
+        # Android 版本
+        android_ver = safe_str(project_config.get('version', {}).get('android', ''))
+        if android_ver and android_ver != '""' and android_ver != "''":
+            branch_components.append(android_ver)
+            
+        # 日期
+        date = safe_str(project_config.get('date', ''))
+        if date and date != '""' and date != "''":
+            branch_components.append(date)
         
         # 生成分支名
         branch_name = "_".join(branch_components)
