@@ -1,0 +1,31 @@
+# ./AnotherProduct/overlay.yaml
+baseline:
+  product: QCM2290.LA.5.0 # Override the product name
+
+common:
+  name_prefix_base: "Post-CS4 0.0.016.0" # Set the prefix to empty for this product
+  default_path_prefix: "LA.VENDOR.13.2.1.r2/LINUX/android/"
+  qssi_14_path: "LA.QSSI.14.0.r3/LINUX/android/"
+# You could also override specific operations or projects here if needed
+operations:
+  # - file: "LA.VENDOR.13.2.1.R2.xml" # Find this entry and override
+  #   name_prefix: "SpecialPrefix/LA.VENDOR.13.2.1.R2/" # Override only name_prefix
+  - file: "LA.VENDOR.13.2.1.R2.xml"
+    # path_prefix: "{{ common.vendor_path }}" # 如果某个文件需要特定的 path_prefix,
+                                             # 可以在这里指定, 覆盖默认模板
+  - file: "KERNEL.PLATFORM.2.0.R12.xml"
+  - file: "LA.QSSI.14.0.R3.xml"
+    path_prefix: "{{ common.qssi_14_path }}" # 示例: 覆盖默认 path_prefix  
+  - file: "LA.QSSI.13.0.R1.xml"
+  - file: "IOT_High_Mid_2024.SPF.1.0.xml"
+    name_prefix: "{% if common.name_prefix_base %}{{ common.name_prefix_base }}/{% endif %}modem/"
+    path_prefix: ""  # 使用带引号的空字符串明确覆盖
+
+projects:  # Projects configuration using common variables
+  - manifest: "include/LA.VENDOR.13.2.1.R2_all_projects.xml"
+  - manifest: "include/LA.QSSI.14.0.R3_all_projects.xml"
+  - manifest: "include/LA.QSSI.13.0.R1_all_projects.xml"
+  - manifest: "include/KERNEL.PLATFORM.2.0.R12_all_projects.xml"
+  - manifest: "include/IOT_High_Mid_2024.SPF.1.0_all_projects.xml"
+
+    

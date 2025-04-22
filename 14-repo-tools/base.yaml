@@ -1,0 +1,51 @@
+# base.yaml
+baseline:
+  product: QCM2290.LA.5.0  # 默认产品, 会被 overlay 覆盖
+
+common:
+  # === 基础变量 (可被 overlay 覆盖) ===
+  name_prefix_base: "Post-CS4 0.0.016.0" # overlay 可设为空 ""
+  default_path_prefix: "" # 默认的 path_prefix
+  project_demo_path : "" # 项目的 demo 路径
+  project_manifest_prefix: "" # 项目的 manifest 路径
+  project_output_path: "" # 项目的输出路径
+  # === 前缀模板 (使用 Jinja2) ===
+  # name 前缀模板: 包含基础部分(如果存在)和文件名占位符 {{ filename }}
+  # 注意: {{ filename }} 会在 Python 代码中被替换
+  #       baseline.product 会在 Python 代码中被添加到最前面
+  name_prefix_template: "{% if common.name_prefix_base %}{{ common.name_prefix_base }}/{% endif %}{{ filename }}/"
+  # path 前缀模板: 默认为 default_path_prefix，overlay 可以覆盖它或整个模板
+  path_prefix_template: "{{ common.default_path_prefix }}"
+  demo: "./demo.git"
+  output: "{{ baseline.product }}/repositories"
+
+operations:
+  # 大部分 operation 只需要指定文件名
+  # 前缀将由 Python 代码使用上面的模板生成
+  # - file: "LA.VENDOR.13.2.1.R2.xml"
+  #   # path_prefix: "{{ common.vendor_path }}" # 如果某个文件需要特定的 path_prefix,
+  #                                            # 可以在这里指定, 覆盖默认模板
+  # - file: "KERNEL.PLATFORM.2.0.R12.xml"
+  # - file: "LA.QSSI.14.0.R3.xml"
+  #   #path_prefix: "{{ common.qssi_14_path }}" # 示例: 覆盖默认 path_prefix  
+  # - file: "LA.QSSI.13.0.R1.xml"
+  # - file: "IOT_High_Mid_2024.SPF.1.0.xml"
+  #   # 特殊的 name_prefix 可以直接在这里写死, 覆盖模板
+  #   name_prefix: "{% if common.name_prefix_base %}{{ common.name_prefix_base }}/{% endif %}modem/"
+  #   path_prefix: "" # path_prefix 为空
+
+# --- 以下部分可以保持不变, 或者也使用模板 ---
+# projects:
+#   - manifest: "{{ common.project_manifest_prefix }}LA.VENDOR.13.2.1.R2_all_projects.xml"
+#     demo: "{{ common.project_demo_path }}"
+#     output: "{{ common.project_output_path }}"
+#   ...
+
+projects:  # Projects configuration using common variables
+  # - manifest: "{{ baseline.product }}/include/LA.VENDOR.13.2.1.R2_all_projects.xml"
+  # - manifest: "{{ baseline.product  }}/include/LA.QSSI.14.0.R3_all_projects.xml"
+  # - manifest: "{{ baseline.product  }}/include/LA.QSSI.13.0.R1_all_projects.xml"
+  # - manifest: "{{ baseline.product  }}/include/KERNEL.PLATFORM.2.0.R12_all_projects.xml"
+  # - manifest: "{{ baseline.product  }}/include/IOT_High_Mid_2024.SPF.1.0_all_projects.xml"
+
+# Add other global configurations if needed
