@@ -1,5 +1,0 @@
-- source: qcm2290_r12/iot-high-mid-2024-spf-1-0_amss_standard_oem
-  target: .
-  target_dir: m16q_r12_1206
-  branch: UPQ00A03_M16Q_QCM2290_U_241206
-  option: false  # 开启单独处理每个git仓库模式
